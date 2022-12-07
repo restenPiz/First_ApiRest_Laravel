@@ -27,6 +27,9 @@ class authController extends Controller
                 'sucess'=>false,
             ]);
         }else{
+            //Create a subquery to return the user email
+            $user=User::where('email',$request->email)->first();
+            
             return \response()->json([
                 'message'=>'Logado com sucesso',
                 'sucess'=>true,
