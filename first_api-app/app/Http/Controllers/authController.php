@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Models\User;
+use Request;
 
 class authController extends Controller
 {
@@ -47,7 +48,7 @@ class authController extends Controller
     //start the method to do register
     public function register()
     {
-
+        $table=new User();
     }
 
 }
