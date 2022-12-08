@@ -42,7 +42,6 @@ class authController extends Controller
             'message'=>'Erro inesperado',
             'sucess'=>false,
         ]);
-
     }
 
 }
