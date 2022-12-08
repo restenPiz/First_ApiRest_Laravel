@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 class authController extends Controller
 {
     //Start the method login
-    public function login()
+    public function login(Request $request)
     {
-        $validation=Validator::make($request->all(),[
+        $validation=$request->validate([
             'email'=>'required|string|email',
             'password'=>'required|string',
         ]);
 
-        if($validation->fails()){
+        if(!$validation){
             return \response()->json([
                 'message'=>'Falha ao validar os dados',
                 'sucess'=>false,
@@ -44,14 +45,13 @@ class authController extends Controller
     }
 
     //start the method to do register
-    public function register()
+    public function register(Request $request)
     {
         $table=new User();
 
-        $table->name=Request::input('name');
-        $table->email=Request::input('email');
-        $table->password=Request::input('password');
-
+        $table->name=$request->input('name');
+        $table->email=$request->input('email');
+        $table->password=$request->input('password');
         $table->save();
 
         return \response()->json([
@@ -63,6 +63,11 @@ class authController extends Controller
     //Creating a logout method
     public function logout()
     {
+        auth()->user()->tokens->delete();
         
+        return \response()->json([
+            'message'=>'Voce foi logado com sucesso',
+            'sucess'=>true,
+        ]);
     }
 }
