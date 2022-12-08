@@ -44,4 +44,10 @@ class authController extends Controller
         ]);
     }
 
+    //start the method to do register
+    public function register()
+    {
+
+    }
+
 }
