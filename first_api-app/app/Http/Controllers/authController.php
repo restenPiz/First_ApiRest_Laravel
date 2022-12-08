@@ -49,6 +49,16 @@ class authController extends Controller
     public function register()
     {
         $table=new User();
-    }
 
+        $table->name=Request::input('name');
+        $table->email=Request::input('email');
+        $table->password=Request::input('password');
+
+        $table->save();
+
+        return \response()->json([
+            'message'=>'O usuario foi registrado com sucesso',
+            'sucess'=>true,
+        ]);
+    }
 }
