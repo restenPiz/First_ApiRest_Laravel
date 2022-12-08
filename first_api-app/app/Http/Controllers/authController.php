@@ -12,36 +12,19 @@ class authController extends Controller
     {
         $validation=$request->validate([
             'email'=>'required|string|email',
-            'password'=>'required|string',
+            'password'=>'required|min:10',
         ]);
 
-        if(!$validation){
-            return \response()->json([
-                'message'=>'Falha ao validar os dados',
-                'sucess'=>false,
-            ]);
-        }
-
-        if(!Auth::attempt($request->only('email','password'))){
+        if(!Auth::attempt($validation)){
             return \response()->json([
                 'message'=>'Usuario ou senha incorrectos',
-                'sucess'=>false,
-            ]);
-        }else{
-            //Create a subquery to return the user email
-            $user=User::where('email',$request->email)->first();
-            
-            return \response()->json([
-                'message'=>'Logado com sucesso',
-                'sucess'=>true,
-                'token'=>$user->createToken(md5($user->email).$user->email)->plainTextToken,
-            ]);
+            ],403);
         }
 
         return \response()->json([
-            'message'=>'Erro inesperado',
-            'sucess'=>false,
-        ]);
+            'user'=>auth()->user(),
+            'token'=>auth()->user()->createToken('secret')->plainTextToken,
+        ],200);
     }
 
     //start the method to do register
