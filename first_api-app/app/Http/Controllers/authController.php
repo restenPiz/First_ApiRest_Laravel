@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Models\User;
-use Request;
-
 class authController extends Controller
 {
     //Start the method login
@@ -60,5 +58,11 @@ class authController extends Controller
             'message'=>'O usuario foi registrado com sucesso',
             'sucess'=>true,
         ]);
+    }
+
+    //Creating a logout method
+    public function logout()
+    {
+        
     }
 }
