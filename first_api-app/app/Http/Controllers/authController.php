@@ -34,17 +34,13 @@ class authController extends Controller
     }
 
     //start the method to do register
-    public function register(Request $request, $data)
+    public function register(Request $request)
     {
-        $table=new User();
+        $data=new User();
 
-        $table->name=$request->input('name');
-        $table->email=$request->input('email');
-        $table->password=$request->input('password');
-                
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name' => $data->name=$request->input('name'),
+            'email' => $data->email=$request->input('email'),
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
         ]);
