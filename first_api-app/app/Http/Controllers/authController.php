@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
 class authController extends Controller
 {
     //Start the method login
@@ -12,18 +13,20 @@ class authController extends Controller
     {
         $validation=$request->validate([
             'email'=>'required|string|email',
-            'password'=>'required|min:10',
+            'password'=>'required|min:4',
         ]);
 
-        if(!Auth::attempt($validation)){
+        if(!Auth::attempt($validation))
+        {
             return \response()->json([
                 'message'=>'Usuario ou senha incorrectos',
             ],403);
         }
 
         return \response()->json([
+            'message'=>'Voce esta logado com sucesso',
             'user'=>auth()->user(),
-            'token'=>auth()->user()->createToken('secret')->plainTextToken,
+           // 'token'=>auth()->user()->createToken('secret')->plainTextToken,
         ],200);
     }
 
@@ -35,6 +38,7 @@ class authController extends Controller
         $table->name=$request->input('name');
         $table->email=$request->input('email');
         $table->password=$request->input('password');
+        
         $table->save();
 
         return \response()->json([
