@@ -12,25 +12,28 @@ use Illuminate\Support\Facades\Hash;
 class authController extends Controller
 {
     //Start the method login
-    public function login(Request $request)
+    public function login(User $request)
     {
-        $validation=$request->validate([
-            'email'=>'required|string|email',
-            'password'=>'required|min:4',
-        ]);
+        $credentials = $request->all();
 
-        if(!Auth::attempt($validation))
-        {
+        if(!Auth::validate($credentials)):
             return \response()->json([
-                'message'=>'Usuario ou senha incorrectos',
-            ],403);
-        }
+                'message'=>'Falha ao iniciar sessao',
+                'user'=>auth()->user(),
+            // 'token'=>auth()->user()->createToken('secret')->plainTextToken,
+            ],200);
+        endif;
+
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
+        Auth::login($user);
 
         return \response()->json([
             'message'=>'Voce esta logado com sucesso',
             'user'=>auth()->user(),
-           // 'token'=>auth()->user()->createToken('secret')->plainTextToken,
+        // 'token'=>auth()->user()->createToken('secret')->plainTextToken,
         ],200);
+    
     }
 
     //start the method to do register
