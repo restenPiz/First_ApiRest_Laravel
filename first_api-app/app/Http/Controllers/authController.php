@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 
 class authController extends Controller
 {
@@ -31,26 +34,27 @@ class authController extends Controller
     }
 
     //start the method to do register
-    public function register(Request $request)
+    public function register(Request $request, $data)
     {
         $table=new User();
 
         $table->name=$request->input('name');
         $table->email=$request->input('email');
         $table->password=$request->input('password');
-        
-        $table->save();
-
-        return \response()->json([
-            'message'=>'O usuario foi registrado com sucesso',
-            'sucess'=>true,
+                
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'api_token' => Str::random(60),
         ]);
     }
 
     //Creating a logout method
     public function logout()
     {
-        auth()->user()->tokens->delete();
+        Session::flush();        
+        Auth::logout();
         
         return \response()->json([
             'message'=>'Voce foi logado com sucesso',
