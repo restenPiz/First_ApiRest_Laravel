@@ -48,8 +48,7 @@ class authController extends Controller
 
     //Creating a logout method
     public function logout()
-    {
-        Session::flush();        
+    {  
         Auth::logout();
         
         return \response()->json([
