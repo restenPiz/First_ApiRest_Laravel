@@ -38,11 +38,17 @@ class authController extends Controller
     {
         $data=new User();
 
+        //Method to insert the request datas in my table user
         return User::create([
             'name' => $data->name=$request->input('name'),
             'email' => $data->email=$request->input('email'),
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
+        ]);
+
+        return \response()->json([
+            'message' => 'O usuario foi registrado com sucesso',
+            'sucess' =>true
         ]);
     }
 
