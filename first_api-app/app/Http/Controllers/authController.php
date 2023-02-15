@@ -20,7 +20,7 @@ class authController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
- 
+
         if (Auth::attempt($credentials)) :
             return \response()->json([
                 'message'=>'Voce esta logado com sucesso',
@@ -47,16 +47,16 @@ class authController extends Controller
         ]);
 
         return \response()->json([
-            'message' => 'O usuario foi registrado com sucesso',
+            'message' => 'O usuario registrado com sucesso',
             'sucess' =>true
         ]);
     }
 
     //Creating a logout method
     public function logout()
-    {  
+    {
         Auth::logout();
-        
+
         return \response()->json([
             'message'=>'Logout concluido com sucesso',
             'sucess'=>true,
