@@ -48,7 +48,7 @@ class authController extends Controller
 
         return \response()->json([
             'message' => 'O usuario registrado com sucesso',
-            'sucess' =>true
+            'sucess' =>true,
         ]);
     }
 
