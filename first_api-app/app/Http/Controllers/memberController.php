@@ -12,9 +12,7 @@ class memberController extends Controller
     {
         $members=Member::all();
 
-        return response()->json([
-            $members,
-        ]);
+        return response()->json($members);
     }
     public function storeMember()
     {
@@ -35,9 +33,7 @@ class memberController extends Controller
     {
         $members=Member::find($id);
 
-        return response()->json([
-            $members,
-        ]);
+        return response()->json($members);
     }
 
     public function updateMember($id)
