@@ -39,4 +39,18 @@ class memberController extends Controller
             $members,
         ]);
     }
+
+    public function updateMember($id)
+    {
+        $member=Member::find($id);       
+    
+        $member->Name=Request::input('Name');
+        $member->Surname=Request::input('Surname');
+        $member->Task=Request::input('Task');
+        $member->id=Request::input('id');
+
+        $member->save();
+
+        return redirect()->route('allMember');
+    }
 }
