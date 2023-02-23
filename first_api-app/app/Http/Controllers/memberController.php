@@ -8,6 +8,14 @@ use Request;
 class memberController extends Controller
 {
     //Inicio dos metodos responsaveis por fazer o Crud
+    public function allMember()
+    {
+        $members=Member::all();
+
+        return \response()->json([
+            $members,
+        ]);
+    }
     public function storeMember()
     {
         $table=new Member();
