@@ -22,4 +22,13 @@ class memberController extends Controller
             'message'=>'O membro foi cadastrado com sucesso.',
         ]);
     }
+
+    public function editMember($id)
+    {
+        $members=Member::find($id);
+
+        return \response()->json([
+            $members,
+        ]);
+    }
 }
