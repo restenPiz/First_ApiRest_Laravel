@@ -53,4 +53,12 @@ class memberController extends Controller
 
         return redirect()->route('allMember');
     }
+    public function deleteMember($id)
+    {
+        $members=Member::find($id);
+
+        $members->delete();
+
+        return redirect()->route('allMember');
+    }
 }
