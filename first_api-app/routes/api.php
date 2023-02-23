@@ -23,6 +23,6 @@ Route::post('/logout',[authController::class, 'logout']);
 //Inicio das rotas para o Crud da parte de membros
 
 Route::post('/storeMember',[memberController::class, 'storeMember']);
-Route::post('/editMember',[memberController::class, 'editMember']);
+Route::get('/editMember',[memberController::class, 'editMember']);
 Route::post('/updateMember',[memberController::class, 'updateMember']);
-Route::post('/deleteMember',[memberController::class, 'deleteMember']);
+Route::get('/deleteMember',[memberController::class, 'deleteMember']);
