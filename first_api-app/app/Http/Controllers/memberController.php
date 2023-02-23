@@ -12,7 +12,7 @@ class memberController extends Controller
     {
         $members=Member::all();
 
-        return \response()->json([
+        return response()->json([
             $members,
         ]);
     }
@@ -26,7 +26,7 @@ class memberController extends Controller
 
         $table->save();
 
-        return \response()->json([
+        return response()->json([
             'message'=>'O membro foi cadastrado com sucesso.',
         ]);
     }
@@ -35,7 +35,7 @@ class memberController extends Controller
     {
         $members=Member::find($id);
 
-        return \response()->json([
+        return response()->json([
             $members,
         ]);
     }
