@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\authController;
+use App\Http\Controllers\memberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,10 @@ use App\Http\Controllers\authController;
 Route::post('/login',[authController::class, 'login']);
 Route::post('/register',[authController::class, 'register']);
 Route::post('/logout',[authController::class, 'logout']);
+
+//Inicio das rotas para o Crud da parte de membros
+
+Route::post('/storeMember',[memberController::class, 'storeMember']);
+Route::post('/editMember',[memberController::class, 'editMember']);
+Route::post('/updateMember',[memberController::class, 'updateMember']);
+Route::post('/deleteMember',[memberController::class, 'deleteMember']);
