@@ -24,6 +24,6 @@ Route::post('/logout',[authController::class, 'logout']);
 
 Route::get('/allMember',[memberController::class, 'allMember']);
 Route::post('/storeMember',[memberController::class, 'storeMember']);
-Route::get('/editMember',[memberController::class, 'editMember']);
-Route::post('/updateMember',[memberController::class, 'updateMember']);
-Route::get('/deleteMember',[memberController::class, 'deleteMember']);
+Route::get('/editMember/{id}',[memberController::class, 'editMember']);
+Route::post('/updateMember/{id}',[memberController::class, 'updateMember']);
+Route::get('/deleteMember/{id}',[memberController::class, 'deleteMember']);
