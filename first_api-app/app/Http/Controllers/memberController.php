@@ -24,9 +24,7 @@ class memberController extends Controller
 
         $table->save();
 
-        return response()->json([
-            'message'=>'O membro foi cadastrado com sucesso.',
-        ]);
+        return redirect()->route('allMember');
     }
 
     public function editMember($id)
