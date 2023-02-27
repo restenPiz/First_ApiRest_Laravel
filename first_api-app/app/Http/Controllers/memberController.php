@@ -45,7 +45,10 @@ class memberController extends Controller
 
         $member->save();
 
-        return response()->json($member);
+        //Retorna a mensagem mencionando que o membro foi actualizado
+        return \response()->json([
+            'message'=>'Os seus dados foram actualizados com sucesso',
+        ]);
     }
     public function deleteMember($id)
     {
