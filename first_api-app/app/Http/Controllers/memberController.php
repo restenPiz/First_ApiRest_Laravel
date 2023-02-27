@@ -45,7 +45,7 @@ class memberController extends Controller
 
         $member->save();
 
-        return redirect()->route('allMember');
+        return response()->json($member);
     }
     public function deleteMember($id)
     {
