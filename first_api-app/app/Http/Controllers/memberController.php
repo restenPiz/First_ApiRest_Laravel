@@ -11,9 +11,9 @@ class memberController extends Controller
     {
         $table=new Member();
 
-        $table->Name=Request::input('Name');
-        $table->Surname=Request::input('Surname');
-        $table->Task=Request::input('Task');
+        $table->Title=Request::input('Titile');
+        $table->Description=Request::input('Description');
+        $table->Date=Request::input('Date');
 
         $table->save();
 
