@@ -9,7 +9,7 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $table='members';
+    protected $table='tasks';
 
     protected $fillable=[
         'Title','Description','Date'

@@ -13,11 +13,11 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('Surname');
-            $table->string('Task');
+            $table->string('Title');
+            $table->string('Description',10000);
+            $table->date('Date');
             $table->timestamps();
         });
     }
