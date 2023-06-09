@@ -19,4 +19,10 @@ class memberController extends Controller
 
         return response()->json(['message' => 'A tarefa foi inserida com sucesso!'], 201);
     }
+    public function allMember()
+    {
+        $tasks=Member::all();
+
+        return response()->json($tasks);
+    }
 }
