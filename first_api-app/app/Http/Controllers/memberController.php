@@ -21,8 +21,8 @@ class memberController extends Controller
     }
     public function allMember()
     {
-        $tasks=Member::all();
+        $produtos=Member::all();
 
-        return response()->json($tasks);
+        return response()->json($produtos->toArray(), 200);
     }
 }
