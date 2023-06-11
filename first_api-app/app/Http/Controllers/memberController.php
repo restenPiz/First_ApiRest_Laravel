@@ -25,4 +25,12 @@ class memberController extends Controller
 
         return response()->json($produtos->toArray(), 200);
     }
+    public function deleteTask($id)
+    {
+        $tasks=Member::findOrFail($id);
+
+        $tasks->delete();
+
+        return response()->json($tasks->toArray(), 200);
+    }
 }
