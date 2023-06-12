@@ -7,4 +7,4 @@ use App\Http\Controllers\memberController;
 
 Route::post('/storeMember',[memberController::class, 'storeMember']);
 Route::get('/allTask',[memberController::class, 'allMember']);
-Route::get('/deleteTask/{$id}',[memberController::class, 'deleteTask']);
+Route::get('/deleteTask/{id}', [memberController::class, 'deleteTask']);
