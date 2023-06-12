@@ -31,6 +31,6 @@ class memberController extends Controller
 
         $tasks->delete();
 
-        return response()->json($tasks->toArray(), 200);
+        return response()->json(['message'=>'A tarefa foi eliminada com sucesso!'], 200);
     }
 }
