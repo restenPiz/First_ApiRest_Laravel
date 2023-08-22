@@ -27,7 +27,7 @@ class memberController extends Controller
     }
     public function deleteTask($id)
     {
-        $tasks=Member::findOrFail($id);
+        $tasks=Member::find($id);
 
         $tasks->delete();
 
